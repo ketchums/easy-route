@@ -85,6 +85,25 @@ class EasyRouter
     
     public function resolve($endpoint) : void
     {
+        if (array_key_exists($endpoint, $this->routes)) {
+            echo '404';
+            exit();
+        }
 
+        if (!in_array($_SERVER['REQUEST_METHOD'], $this->routeMethods[$endpoint])) {
+            echo '405';
+            exit();
+        }
+
+        $options = $this->routes[$endpoint];
+        $method = $options['method'];
+
+        if (is_callable($method) && !array_key_exists('controller', $options)) {
+            $method();
+        }
+        else {
+            $controller = new $options['controller']();
+            call_user_func(array($controller, $method));
+        }
     }
 }
