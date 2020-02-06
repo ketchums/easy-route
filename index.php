@@ -6,7 +6,7 @@ include 'EasyRouter.php';
 
 $router = new EasyRouter();
 
-$router->get('/', [
+$router->addGet('/', [
     'controller' => 'TestController',
     'method' => 'invoke'
 ]);

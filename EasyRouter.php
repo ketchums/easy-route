@@ -7,27 +7,27 @@ class EasyRouter
     private $routes = [];
     private $routeMethods = [];
 
-    public function get(string $url, array $options) : void
+    public function addGet(string $url, array $options) : void
     {
         $this->add($url, ['GET'], $options);
     }
 
-    public function post(string $url, array $options) : void
+    public function addPost(string $url, array $options) : void
     {
         $this->add($url, ['POST'], $options);
     }
-    
-    public function put(string $url, array $options) : void
+
+    public function addPut(string $url, array $options) : void
     {
         $this->add($url, ['PUT'], $options);
     }
-    
-    public function patch(string $url, array $options) : void
+
+    public function addPatch(string $url, array $options) : void
     {
         $this->add($url, ['PATCH'], $options);
     }
-    
-    public function delete(string $url, array $options) : void
+
+    public function addDelete(string $url, array $options) : void
     {
         $this->add($url, ['DELETE'], $options);
     }
@@ -38,7 +38,7 @@ class EasyRouter
         $this->routeMethods[$url] = $methods;
     }
     
-    public function resolve() : void
+    public function resolve($endpoint) : void
     {
 
     }
